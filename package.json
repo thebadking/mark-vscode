@@ -1,0 +1,170 @@
+{
+	"name": "mark-tasks",
+	"displayName": "Mark - File Task Manager",
+	"description": "Track file progress across tasks with visual indicators. Perfect for code reviews, refactoring, and team collaboration.",
+	"version": "0.1.0",
+	"publisher": "thebadking",
+	"author": {
+		"name": "thebadking",
+		"url": "https://github.com/thebadking"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thebadking/mark-vscode"
+	},
+	"bugs": {
+		"url": "https://github.com/thebadking/mark-vscode/issues"
+	},
+	"homepage": "https://github.com/thebadking/mark-vscode#readme",
+	"license": "MIT",
+	"keywords": [
+		"task",
+		"todo",
+		"file tracking",
+		"code review",
+		"project management",
+		"productivity",
+		"checklist"
+	],
+	"engines": {
+		"vscode": "^1.100.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"galleryBanner": {
+		"color": "#1e1e1e",
+		"theme": "dark"
+	},
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "mark.markFileDone",
+				"title": "Mark: Mark File as Done"
+			},
+			{
+				"command": "mark.markFileUndone",
+				"title": "Mark: Mark File as Undone"
+			},
+			{
+				"command": "mark.createTask",
+				"title": "Mark: Create New Task"
+			},
+			{
+				"command": "mark.setActiveTask",
+				"title": "Mark: Set Active Task"
+			},
+			{
+				"command": "mark.listTasks",
+				"title": "Mark: List All Tasks"
+			},
+			{
+				"command": "mark.showTaskFiles",
+				"title": "Mark: Show Files in Task"
+			},
+			{
+				"command": "mark.deleteTask",
+				"title": "Mark: Delete Task"
+			},
+			{
+				"command": "mark.refreshTaskView",
+				"title": "Mark: Refresh Task View",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "mark.removeFileFromTask",
+				"title": "Mark: Remove File from Task"
+			},
+			{
+				"command": "mark.toggleViewMode",
+				"title": "Mark: Toggle Flat/Tree View",
+				"icon": "$(list-tree)"
+			},
+			{
+				"command": "mark.openFile",
+				"title": "Mark: Open File"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "mark-explorer",
+					"title": "Mark Tasks",
+					"icon": "$(checklist)"
+				}
+			]
+		},
+		"views": {
+			"mark-explorer": [
+				{
+					"id": "markTaskView",
+					"name": "Tasks"
+				}
+			]
+		},
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "mark.markFileDone",
+					"group": "mark@1"
+				},
+				{
+					"command": "mark.markFileUndone",
+					"group": "mark@2"
+				}
+			],
+			"view/title": [
+				{
+					"command": "mark.refreshTaskView",
+					"when": "view == markTaskView",
+					"group": "navigation"
+				},
+				{
+					"command": "mark.toggleViewMode",
+					"when": "view == markTaskView",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "mark.markFileDone",
+					"when": "view == markTaskView && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "mark.markFileUndone",
+					"when": "view == markTaskView && viewItem == file",
+					"group": "inline"
+				},
+				{
+					"command": "mark.removeFileFromTask",
+					"when": "view == markTaskView && viewItem == file"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.13.0",
+		"@stylistic/eslint-plugin": "^2.9.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "^22",
+		"@types/vscode": "^1.100.0",
+		"@vscode/test-cli": "^0.0.8",
+		"@vscode/test-electron": "^2.3.9",
+		"eslint": "^9.13.0",
+		"mocha": "^10.2.0",
+		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.39.0"
+	}
+}
