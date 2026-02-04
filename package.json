@@ -44,67 +44,67 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "mark.markFileDone",
+				"command": "filequest.markFileDone",
 				"title": "Filequest: Mark File as Done",
 				"icon": "$(check)"
 			},
 			{
-				"command": "mark.markFileUndone",
+				"command": "filequest.markFileUndone",
 				"title": "Filequest: Mark File as Undone",
 				"icon": "$(circle-outline)"
 			},
 			{
-				"command": "mark.createTask",
+				"command": "filequest.createTask",
 				"title": "Filequest: Create New Task"
 			},
 			{
-				"command": "mark.setActiveTask",
+				"command": "filequest.setActiveTask",
 				"title": "Filequest: Set Active Task"
 			},
 			{
-				"command": "mark.listTasks",
+				"command": "filequest.listTasks",
 				"title": "Filequest: List All Tasks"
 			},
 			{
-				"command": "mark.showTaskFiles",
+				"command": "filequest.showTaskFiles",
 				"title": "Filequest: Show Files in Task"
 			},
 			{
-				"command": "mark.deleteTask",
+				"command": "filequest.deleteTask",
 				"title": "Filequest: Delete Task"
 			},
 			{
-				"command": "mark.refreshTaskView",
+				"command": "filequest.refreshTaskView",
 				"title": "Filequest: Refresh Task View",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "mark.removeFileFromTask",
+				"command": "filequest.removeFileFromTask",
 				"title": "Filequest: Remove File from Task"
 			},
 			{
-				"command": "mark.toggleViewMode",
+				"command": "filequest.toggleViewMode",
 				"title": "Filequest: Toggle Flat/Tree View",
 				"icon": "$(list-tree)"
 			},
 			{
-				"command": "mark.openFile",
+				"command": "filequest.openFile",
 				"title": "Filequest: Open File"
 			}
 		],
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "mark-explorer",
+					"id": "filequest-explorer",
 					"title": "Filequest",
 					"icon": "$(checklist)"
 				}
 			]
 		},
 		"views": {
-			"mark-explorer": [
+			"filequest-explorer": [
 				{
-					"id": "markTaskView",
+					"id": "filequestTaskView",
 					"name": "Tasks"
 				}
 			]
@@ -112,42 +112,42 @@
 		"menus": {
 			"explorer/context": [
 				{
-					"command": "mark.markFileDone",
-					"group": "mark@1"
+					"command": "filequest.markFileDone",
+					"group": "filequest@1"
 				},
 				{
-					"command": "mark.markFileUndone",
-					"group": "mark@2"
+					"command": "filequest.markFileUndone",
+					"group": "filequest@2"
 				}
 			],
 			"view/title": [
 				{
-					"command": "mark.refreshTaskView",
-					"when": "view == markTaskView",
+					"command": "filequest.refreshTaskView",
+					"when": "view == filequestTaskView",
 					"group": "navigation"
 				},
 				{
-					"command": "mark.toggleViewMode",
-					"when": "view == markTaskView",
+					"command": "filequest.toggleViewMode",
+					"when": "view == filequestTaskView",
 					"group": "navigation"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "mark.markFileDone",
-					"when": "view == markTaskView && viewItem == file",
+					"command": "filequest.markFileDone",
+					"when": "view == filequestTaskView && viewItem == file",
 					"icon": "$(check)",
 					"group": "inline"
 				},
 				{
-					"command": "mark.markFileUndone",
-					"when": "view == markTaskView && viewItem == file",
+					"command": "filequest.markFileUndone",
+					"when": "view == filequestTaskView && viewItem == file",
 					"icon": "$(circle-outline)",
 					"group": "inline"
 				},
 				{
-					"command": "mark.removeFileFromTask",
-					"when": "view == markTaskView && viewItem == file"
+					"command": "filequest.removeFileFromTask",
+					"when": "view == filequestTaskView && viewItem == file"
 				}
 			]
 		}

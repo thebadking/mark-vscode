@@ -296,7 +296,7 @@ class TaskTreeItem extends vscode.TreeItem {
 		if (itemType === 'file') {
 			this.contextValue = 'file';
 			this.command = {
-				command: 'mark.openFile',
+				command: 'filequest.openFile',
 				title: 'Open File',
 				arguments: [filePath]
 			};
@@ -458,7 +458,7 @@ export function activate(context: vscode.ExtensionContext) {
 	if (!taskTreeDataProvider) {
 		taskTreeDataProvider = new TaskTreeDataProvider();
 		context.subscriptions.push(
-			vscode.window.registerTreeDataProvider('markTaskView', taskTreeDataProvider)
+			vscode.window.registerTreeDataProvider('filequestTaskView', taskTreeDataProvider)
 		);
 	}
 
@@ -470,7 +470,7 @@ export function activate(context: vscode.ExtensionContext) {
 		})
 	);
 
-	const markFileDone = vscode.commands.registerCommand('mark.markFileDone', async (uri?: vscode.Uri) => {
+	const markFileDone = vscode.commands.registerCommand('filequest.markFileDone', async (uri?: vscode.Uri) => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -529,7 +529,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const markFileUndone = vscode.commands.registerCommand('mark.markFileUndone', async (uri?: vscode.Uri) => {
+	const markFileUndone = vscode.commands.registerCommand('filequest.markFileUndone', async (uri?: vscode.Uri) => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -588,7 +588,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const createTask = vscode.commands.registerCommand('mark.createTask', async () => {
+	const createTask = vscode.commands.registerCommand('filequest.createTask', async () => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 		const taskName = await vscode.window.showInputBox({
@@ -613,7 +613,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const setActiveTask = vscode.commands.registerCommand('mark.setActiveTask', async () => {
+	const setActiveTask = vscode.commands.registerCommand('filequest.setActiveTask', async () => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -647,7 +647,7 @@ export function activate(context: vscode.ExtensionContext) {
 		taskTreeDataProvider?.refresh();
 	});
 
-	const listTasks = vscode.commands.registerCommand('mark.listTasks', () => {
+	const listTasks = vscode.commands.registerCommand('filequest.listTasks', () => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -668,7 +668,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage(taskInfo);
 	});
 
-	const showTaskFiles = vscode.commands.registerCommand('mark.showTaskFiles', async () => {
+	const showTaskFiles = vscode.commands.registerCommand('filequest.showTaskFiles', async () => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -701,7 +701,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage(`Task: ${taskName}\n${fileInfo}`);
 	});
 
-	const deleteTask = vscode.commands.registerCommand('mark.deleteTask', async () => {
+	const deleteTask = vscode.commands.registerCommand('filequest.deleteTask', async () => {
 		const manager = getTaskManager();
 		if (!manager) {return;}
 
@@ -726,17 +726,17 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const refreshTaskView = vscode.commands.registerCommand('mark.refreshTaskView', () => {
+	const refreshTaskView = vscode.commands.registerCommand('filequest.refreshTaskView', () => {
 		taskManager?.reload();
 		decorationProvider?.refresh();
 		taskTreeDataProvider?.refresh();
 	});
 
-	const toggleViewMode = vscode.commands.registerCommand('mark.toggleViewMode', () => {
+	const toggleViewMode = vscode.commands.registerCommand('filequest.toggleViewMode', () => {
 		taskTreeDataProvider?.toggleViewMode();
 	});
 
-	const removeFileFromTask = vscode.commands.registerCommand('mark.removeFileFromTask', async (item: TaskTreeItem) => {
+	const removeFileFromTask = vscode.commands.registerCommand('filequest.removeFileFromTask', async (item: TaskTreeItem) => {
 		const manager = getTaskManager();
 		if (!manager || !item.filePath || !item.taskName) {return;}
 
@@ -746,7 +746,7 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 	});
 
-	const openFile = vscode.commands.registerCommand('mark.openFile', async (filePath: string) => {
+	const openFile = vscode.commands.registerCommand('filequest.openFile', async (filePath: string) => {
 		if (!filePath) {return;}
 		const uri = vscode.Uri.file(filePath);
 		await vscode.window.showTextDocument(uri);

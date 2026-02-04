@@ -1,6 +1,6 @@
 # Filequest - File Task Manager
 
-![Filequest Logo](images/full_logo_bg.svg)
+![Filequest Logo](images/full_logo_bg.png)
 
 ![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -69,6 +69,7 @@ Access commands via Command Palette (Ctrl+Shift+P / Cmd+Shift+P):
 | Filequest: Delete Task | Delete a task |
 | Filequest: Remove File from Task | Remove a file from a task |
 | Filequest: Refresh Task View | Reload task data from disk |
+| Filequest: Toggle Flat/Tree View | Switch between view modes |
 
 ## Usage
 
@@ -78,16 +79,19 @@ Access commands via Command Palette (Ctrl+Shift+P / Cmd+Shift+P):
 - Active task files show badges in the Explorer: ✓ (done) or ○ (in task)
 - The sidebar shows all tasks with the active task marked with ★
 
-### CLI Usage
-All commands can be executed programmatically:
+### Programmatic Usage
+Commands can be executed via VS Code's command API:
 ```
-mark.createTask
-mark.setActiveTask
-mark.markFileDone
-mark.markFileUndone
-mark.listTasks
-mark.deleteTask
-mark.refreshTaskView
+filequest.createTask
+filequest.setActiveTask
+filequest.markFileDone
+filequest.markFileUndone
+filequest.listTasks
+filequest.showTaskFiles
+filequest.deleteTask
+filequest.removeFileFromTask
+filequest.refreshTaskView
+filequest.toggleViewMode
 ```
 
 ## Data Storage
