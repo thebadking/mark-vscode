@@ -1,6 +1,6 @@
 # Filequest - File Task Manager
 
-![Filequest Logo](images/full_logo.svg)
+![Filequest Logo](images/full_logo_bg.svg)
 
 ![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
